@@ -1,4 +1,4 @@
-FROM alpine:3.16
+FROM buster
 
 ENV NODE_VERSION 19.3.0
 
@@ -8,8 +8,8 @@ RUN addgroup -g 1000 node \
         libstdc++ \
     && apk add --no-cache --virtual .build-deps \
         curl \
-    && ARCH= && alpineArch="$(apk --print-arch)" \
-      && case "${alpineArch##*-}" in \
+    && ARCH= && busterArch="$(apk --print-arch)" \
+      && case "${busterArch##*-}" in \
         x86_64) \
           ARCH='x64' \
           CHECKSUM="0964f45fb6040e6bc04f75dcd350412c75a15940d12b14ed7c445397eb15daa4" \
